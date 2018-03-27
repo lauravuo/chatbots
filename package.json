@@ -4,8 +4,8 @@
   "description": "Project for chatbot examples",
   "main": "index.js",
   "scripts": {
-    "lunchtime:build": "rm -rf build/ && babel ./src --out-dir build/ --copy-files --ignore *.test.js",
-    "lunchtime": "npm run lunchtime:build && node ./build/lunchbot/index.js",
+    "build": "rm -rf build/ && babel ./src --out-dir build/ --copy-files --ignore *.test.js",
+    "lunchtime": "npm run build && node ./build/lunchbot/index.js",
     "test": "test"
   },
   "repository": {
