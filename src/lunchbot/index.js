@@ -3,14 +3,19 @@ import request from 'request';
 
 import logger from '../log';
 
+const menuUrl = 'http://pompier.fi/albertinkatu/lounas/';
+
 const parsePompierMenu = (html) => {
   const jsdom = new JSDOM(html);
   const elementIndex = new Date().getDay() + 3;
   const cssSelector = `.page-content :nth-child(${elementIndex})`;
-  return jsdom.window.document.querySelector(cssSelector).textContent;
+  // TODO: content validation
+  const linesString = jsdom.window.document.querySelector(cssSelector).textContent;
+  const lines = linesString.split('\n');
+  return [`<${menuUrl}|${lines[0]}>`, ...lines.slice(1, lines.length)].join('\n');
 };
 
-const fetchPompierMenu = async (url = 'http://pompier.fi/albertinkatu/lounas/') => new Promise((resolve) => {
+const fetchPompierMenu = async (url = menuUrl) => new Promise((resolve) => {
   request(
     url,
     (error, { statusCode }, html) => {
@@ -28,10 +33,12 @@ const fetchPompierMenu = async (url = 'http://pompier.fi/albertinkatu/lounas/') 
   logger.info('Fetching Pompier menu for today...');
   const text = await fetchPompierMenu();
   const payload = { text };
+  // TODO: env variable validation
   request({
     uri: process.env.SLACK_WEBHOOK,
     method: 'POST',
     json: payload,
   });
+  logger.info('Posted menu to slack!');
 })();
 
