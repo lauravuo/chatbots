@@ -30,7 +30,7 @@ workflows:
    lunchtime:
      triggers:
        - schedule:
-           cron: "0 10 * * 1-5"
+           cron: "0 7 * * 1-5"
            filters:
              branches:
                only:
