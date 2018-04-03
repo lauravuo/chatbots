@@ -25,7 +25,7 @@ jobs:
 
       - run: npm run test
 
-  build:
+  lunch:
     docker:
       - image: circleci/node:9.9.0
 
@@ -64,7 +64,7 @@ workflows:
                only:
                  - master
      jobs:
-       - build
+       - lunch
 
 
 
