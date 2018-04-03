@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rm -rf build/ && babel ./src --out-dir build/ --copy-files --ignore *.test.js",
     "lunchtime": "npm run build && node ./build/lunchbot/index.js",
-    "test": "test"
+    "test": "npm run test:lint",
+    "test:lint": "eslint ./src --format codeframe"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,6 @@
   },
   "homepage": "https://github.com/lauravuo/chatbots#readme",
   "dependencies": {
-    "babel-runtime": "^6.26.0",
     "jsdom": "^11.6.2",
     "request": "^2.85.0",
     "winston": "^2.4.1"
@@ -27,7 +27,6 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",

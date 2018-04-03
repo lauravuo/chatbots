@@ -7,7 +7,6 @@ const menuUrl = 'http://pompier.fi/albertinkatu/lounas/';
 const weekdays = ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai'];
 
 const parsePompierMenu = (html) => {
-
   const dayIndex = new Date().getDay() - 1;
   if (dayIndex < 0 || dayIndex >= weekdays.length) {
     return 'Lunch available only weekdays!';
@@ -58,7 +57,6 @@ const fetchPompierMenu = async (url = menuUrl) => new Promise((resolve) => {
     uri: process.env.SLACK_WEBHOOK,
     method: 'POST',
     json: payload,
-  });
-  logger.info('Posted menu to slack!');
+  }, () => logger.info('Posted menu to slack!'));
 })();
 
