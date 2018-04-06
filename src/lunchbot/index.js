@@ -54,7 +54,7 @@ const fetchPompierMenu = async (url = menuUrl) => new Promise((resolve) => {
   const payload = { text };
   // TODO: env variable validation
   request({
-    uri: process.env.SLACK_WEBHOOK,
+    uri: process.env.LUNCHBOT_WEBHOOK,
     method: 'POST',
     json: payload,
   }, () => logger.info('Posted menu to slack!'));

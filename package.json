@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rm -rf build/ && babel ./src --out-dir build/ --copy-files --ignore *.test.js",
     "lunchtime": "npm run build && node ./build/lunchbot/index.js",
+    "newstime": "npm run build && node ./build/newsbot/index.js",
     "test": "npm run test:lint",
     "test:lint": "eslint ./src --format codeframe"
   },
@@ -22,6 +23,7 @@
   "dependencies": {
     "jsdom": "^11.6.2",
     "request": "^2.85.0",
+    "rss-parser": "^3.1.2",
     "winston": "^2.4.1"
   },
   "devDependencies": {
