@@ -27,4 +27,60 @@ Login to GitHub, [create a new project and push the project codes there](https:/
 
 Ok, now our codes are in GitHub. Next step is to enable CircleCI builds for the project.
 
+Login to [CircleCI](https://circleci.com/dashboard) with your GitHub account. Add project using the left menu action "Add projects".
+
+The CI flow is defined in project file .circleci/config.yml. By default it runs only linter for the code (analyses code for potential error).
+
 ## Schedule daily builds for CircleCI
+
+You can use CircleCI to run your bot daily at the same time. Open CI configuration file: .circleci/config.yml.
+
+Add new job under the jobs section:
+
+```
+  lunch:
+    docker:
+      - image: circleci/node:9.9.0
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+        
+      - run: npm start
+```
+
+Add new workflow under the workflows section:
+
+```
+   lunchtime:
+     triggers:
+       - schedule:
+           cron: "0 7 * * 1-5"
+           filters:
+             branches:
+               only:
+                 - master
+     jobs:
+       - lunch
+
+```
+
+The schedule means that the job is run from Monday to Friday at 7 AM GMT.
+Check [how cron syntax works](https://crontab.guru/).
+
+Check full example of [CI configuration file](../.circleci/config.yml).

@@ -170,7 +170,7 @@ Last thing is to finalize the ./package.json file. Replace all 'TODO'-strings wi
 That's it! Now you are ready to open source your bot and make it run according to a specific schedule. See [deployment](./deployment.md)-section.
 
 
-**[Sample workflow in YT](http://www.youtube.com/watch?v=ZqbcFRHZ7WM)**
+## See example workflow on video
 
 [![See the flow](https://img.youtube.com/vi/ZqbcFRHZ7WM/0.jpg)](http://www.youtube.com/watch?v=ZqbcFRHZ7WM)
 
