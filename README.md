@@ -7,6 +7,7 @@ Before the event, register to New Friends Co Slack. Slack workspace is needed fo
 ## Demos
 
 * [Pompierbot](./docs/lunchbot.md) is a simple Slack bot that posts daily lunch menu of Pompier restaurant to Slack channel.
+* [Newsbot](./docs/newsbot.md) is a simple Slack bot that posts latest YLE news to Slack channel.
 * [Eurovision bot](./docs/eurovision-bot.md) is a Facebook messenger bot that recommends Eurovision entries for the user. 
 
 ## Resources

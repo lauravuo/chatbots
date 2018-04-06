@@ -84,3 +84,7 @@ The schedule means that the job is run from Monday to Friday at 7 AM GMT.
 Check [how cron syntax works](https://crontab.guru/).
 
 Check full example of [CI configuration file](../.circleci/config.yml).
+
+## Set environment variable for CI build
+
+Last thing is to add the Slack URL as environment variable to the CircleCI build. Open project settings in CircleCI UI and open "Environment Variables" tab under "Build Settings". Click "Add Variable" and define the values: Name (SLACK_WEBHOOK) and Value (https://hooks.slack.com/services/TODO).
