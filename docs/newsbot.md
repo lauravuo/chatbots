@@ -17,7 +17,7 @@ Replace all content in ./src/index.js with following code:
 import request from 'request';
 import RssParser from 'rss-parser';
 
-import logger from '../log';
+import logger from './log';
 
 const newsUrl = 'https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET';
 const rssParser = new RssParser();
