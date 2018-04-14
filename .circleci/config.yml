@@ -90,16 +90,17 @@ workflows:
                  - master
      jobs:
        - lunch
-   newstime:
-     triggers:
-       - schedule:
-           cron: "0,30 * * * *"
-           filters:
-             branches:
-               only:
-                 - master
-     jobs:
-       - news
+   # disable newsbot for now
+   #newstime:
+   #  triggers:
+   #    - schedule:
+   #        cron: "0,30 * * * *"
+   #        filters:
+   #          branches:
+   #            only:
+   #              - master
+   #  jobs:
+   #    - news
 
 
 
