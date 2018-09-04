@@ -80,16 +80,17 @@ workflows:
    test:
     jobs:
       - test
-   lunchtime:
-     triggers:
-       - schedule:
-           cron: "0 7 * * 1-5"
-           filters:
-             branches:
-               only:
-                 - master
-     jobs:
-       - lunch
+   # disable lunchbot for now
+   #lunchtime:
+   #  triggers:
+   #    - schedule:
+   #        cron: "0 7 * * 1-5"
+   #        filters:
+   #          branches:
+   #            only:
+   #              - master
+   #  jobs:
+   #    - lunch
    # disable newsbot for now
    #newstime:
    #  triggers:
